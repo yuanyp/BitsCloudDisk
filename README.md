@@ -26,7 +26,7 @@ BitsCloudDisk（哔呲云盘），一个基于 Java 开发的公有云盘系统~
 2. 导入项目到 IntelliJ IDEA
 3. 修改数据库和文件下载地址的配置文件
     * 在 service/impl/FileService.java 中修改 `FILE_BASE` 为服务端保存文件的根路径
-    * 在 web.xml 中修改 `FILE_BASE` 为服务端保存文件的根路径
+    * 在 web.xml 中修改 `multipart-config的location` 为服务端保存文件的根路径
 4. 部署启动项目
 5. 浏览器访问：http://localhost:8080
 6. 用户名:admin 密码: 123456

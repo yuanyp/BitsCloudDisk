@@ -220,7 +220,7 @@ public class DiskServiceImpl implements DiskService {
                 Integer parent = queue.poll();
                 List<UserFile> localFileList = userFileMapper.listByParentId(userId, parent);
                 for (UserFile localFile : localFileList) {
-                    OriginFile file = originFileMapper.selectByPrimaryKey(localFile.getFileId());
+                    OriginFile file = originFileMapper.selectByPrimaryKey(localFile.getOriginId());
                     removedCap += file.getFileSize();
                     userFileMapper.deleteByPrimaryKey(localFile.getFileId());
                 }

@@ -11,7 +11,7 @@ $(function () {
         }
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/search?input=" + input,
+            url: "/users/" + sessionStorage.getItem("user_username") + "/disk/search?input=" + input,
             contentType: "application/json; charset=utf-8",
             success: function (result) {
                 var folders = result.folders;

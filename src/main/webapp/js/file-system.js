@@ -88,7 +88,7 @@ function createFolderNode(folderId, show) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/folders/" + folderId + "?sort=" + sortType,
+        url: "/users/" + sessionStorage.getItem("user_username") + "/disk/folders/" + folderId + "?sort=" + sortType,
         /*
          * 在success的回调函数中访问不到外部的folderId，所以添加下面的参数
          * 修正：访问不到函数的参数，但可以访问函数内部的变量！
@@ -291,7 +291,7 @@ function mkfolder() {
         } else {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/folders",
+                url: "/users/" + sessionStorage.getItem("user_username") + "/disk/folders",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(newFolder),
                 success: function (result) {
@@ -326,7 +326,7 @@ function mkfolder() {
 function getRecycleItems() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/folders/3?sort=1",
+        url: "/users/" + sessionStorage.getItem("user_username") + "/disk/folders/3?sort=1",
         contentType: "application/json; charset=utf-8",
         success: function (result) {
             var node = $("#recycle_folder");
@@ -378,7 +378,7 @@ function getFile(type) {
     $("#" + type + " ul").remove();// 删除旧节点
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/" + type,
+        url: "/users/" + sessionStorage.getItem("user_username") + "/" + type,
         contentType: "application/json; charset=utf-8",
         success: function (result) {
             var files = result.files;

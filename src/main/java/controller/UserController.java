@@ -99,7 +99,7 @@ public class UserController {
         }
     }
 
-    // http://localhost:8080/user/check?username=admin
+    // /user/check?username=admin
     @RequestMapping("/check")
     @ResponseBody
     public ResponseResult2 isExistsUserName(@RequestBody User user) {
@@ -189,7 +189,7 @@ public class UserController {
         }
     }
 
-    // http://localhost:8080/user/infoByUsername?username=admin
+    // /user/infoByUsername?username=admin
     @RequestMapping("/infoByUsername")
     @ResponseBody
     public ResponseResult2 info(@RequestBody User user) {
@@ -213,7 +213,7 @@ public class UserController {
         }
     }
 
-    // http://localhost:8080/user/infoByUserId?userId=admin
+    // /user/infoByUserId?userId=admin
     @RequestMapping("/infoByUserId")
     @ResponseBody
     public ResponseResult2 infoById(@RequestBody User user) {

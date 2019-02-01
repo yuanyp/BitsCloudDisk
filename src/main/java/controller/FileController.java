@@ -39,7 +39,7 @@ public class FileController {
     /**
      * 分块文件的大小，与前端保持一致
      */
-    private static final long MAX_CHUNK_SIZE = 102400;
+    private static final long MAX_CHUNK_SIZE = 1024000;
 
     /**
      * 功能：接收分块上传的文件块

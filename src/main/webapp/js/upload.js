@@ -1,6 +1,6 @@
 // $(document).ready(function () {
 //     $.ajax({
-//         url: 'http://localhost:8080/info/',
+//         url: '/info/',
 //         type: 'POST',
 //         dataType: "json",
 //         success: function (returndata) {
@@ -14,7 +14,7 @@
 
 function ajaxFileUpload() {
     $.ajax({
-        url: 'http://localhost:8080/uploadImg/',
+        url: '/uploadImg/',
         type: 'POST',
         data: new FormData($("#uploadForm")[0]),
         dataType: "json",

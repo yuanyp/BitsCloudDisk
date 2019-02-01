@@ -46,7 +46,7 @@ function shred() {
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/recycle",
+        url: "/users/" + sessionStorage.getItem("user_username") + "/recycle",
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(shredData),
         success: function (result) {
@@ -91,7 +91,7 @@ function restore() {
 
     $.ajax({
         type: "PATCH",
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/move",
+        url: "/users/" + sessionStorage.getItem("user_username") + "/disk/move",
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(restoreData),
         success: function (result) {

@@ -15,7 +15,7 @@ public interface FileService {
     /**
      * 所有上传文件URL的根
      */
-    String URL_ROOT = "http://localhost:8080/";
+    String URL_ROOT = "/";
 
     default String getFullFilename(UserFile userFile) {
         return userFile.getFileName() + "." + userFile.getFileType();

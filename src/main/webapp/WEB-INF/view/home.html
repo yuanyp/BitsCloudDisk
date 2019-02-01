@@ -437,7 +437,7 @@
         $("#nav_all").tab("show");
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username"),
+            url: "/users/" + sessionStorage.getItem("user_username"),
             contentType: "application/json; charset=utf-8",
             success: function (user) {
                 sessionStorage.setItem("user_id", user.userId);
@@ -475,7 +475,7 @@
     $(document).ajaxError(function (event, xhr) {
         if (xhr.status == 401) {
             alert("登录已失效，请重新登录");
-            top.location = "http://localhost:8080/";
+            top.location = "/";
             return false;
         }
     });
@@ -489,7 +489,7 @@
     $("#imagebed_upload").click(function () {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/image/upload",
+            url: "/image/upload",
             contentType: "application/json; charset=utf-8",
             success: function (user) {
                 sessionStorage.setItem("image_id", user.userId);
@@ -498,7 +498,7 @@
 
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/image/" + sessionStorage.getItem("image_id"),
+            url: "/image/" + sessionStorage.getItem("image_id"),
             contentType: "application/json; charset=utf-8",
             success: function (user) {
                 $("#imagebed").append("<div class='input-group'><input class='btn btn-default copy-button form-control' id='clipboard' align='left' style='width:320px' value='https://github.com/zenorocha/clipboard.js.git'><button class='btn btn-default copy-button' data-clipboard-target='#foo'><img src='https://clipboardjs.com/assets/images/clippy.svg' width='10' alt='复制到剪贴板'></button>&nbsp;<a onclick='MyEventHub.emitEvent('track_event', ['上传', '打开Link']);' href='http://oqcr0rg2c.bkt.clouddn.com/17-12-16/87090161.jpg' target='_blank' class='btn btn-default'>打开</a></div>")

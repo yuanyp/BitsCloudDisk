@@ -49,11 +49,11 @@ public class ImageController {
             System.out.println("md5:                     !!!!!!!!!!!!!!!! " + md5);
         }
 
-        imageService.insertImage(originalFilename, md5, "http://localhost:8080/images/" + newFileName);
+        imageService.insertImage(originalFilename, md5, "/images/" + newFileName);
 
         Map<String, Object> data = new HashMap<>();
         data.put("md5", md5);
-        data.put("url", "http://localhost:8080/images/" + newFileName);
+        data.put("url", "/images/" + newFileName);
 
         return ResponseResult.builder().code(201).message("获取成功").data(data).build();
     }
@@ -76,7 +76,7 @@ public class ImageController {
 
                 md5 = FileUtil.getFileMD5(file);
             }
-            imageService.insertImage(originalFilename, md5, "http://localhost:8080/images/" + newFileName);
+            imageService.insertImage(originalFilename, md5, "/images/" + newFileName);
         }
 
         return "index";

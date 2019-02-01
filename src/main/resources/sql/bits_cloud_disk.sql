@@ -44,11 +44,10 @@ CREATE TABLE `user_file` (
     `origin_id` INT(11) UNSIGNED NOT NULL COMMENT '源文件ID',
     `file_name` VARCHAR(255) NOT NULL COMMENT '文件名称',
     `file_type` VARCHAR(100) NOT NULL DEFAULT 'UNKNOWN' COMMENT '文件类型（用户可以修改后缀名，但不会影响真实文件类型）',
-    `file_status` TINYINT(2) UNSIGNED NOT NULL DEFAULT 1 COMMENT '文件状态，[1=正常][2=回收站][3=已删除][4=未分享][5=已分享][6=私密]',
+    `file_status` TINYINT(2) UNSIGNED DEFAULT 1 COMMENT '文件状态，[1=正常][2=回收站][3=已删除][4=未分享][5=已分享][6=私密]',
     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '文件创建时间',
     `modify_time` TIMESTAMP NOT NULL DEFAULT '1970-01-02 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '文件修改时间',
-    `delete_time` TIMESTAMP NOT NULL DEFAULT '1970-01-02 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '文件删除时间',
-    CONSTRAINT `file_id_FK` FOREIGN KEY (`file_id`) REFERENCES `origin_file` (`origin_file_id`) ON UPDATE CASCADE
+    `delete_time` TIMESTAMP NOT NULL DEFAULT '1970-01-02 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '文件删除时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=10000 COMMENT='用户文件信息表';
 
 DROP TABLE IF EXISTS `user_folder`;

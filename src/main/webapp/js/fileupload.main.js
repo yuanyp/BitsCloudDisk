@@ -1,12 +1,11 @@
 /* 实现文件上传功能 */
-var capacity = sessionStorage.getItem("user_memorySize");
 $(function () {
     $("#btn_transfer").click(function () {
         $('[role="presentation"][class="active"]').removeClass("active");
         $("#view_control").css("visibility", "hidden");
     });
     $("#fileupload").fileupload({
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/files",
+        url: "/users/" + sessionStorage.getItem("user_username") + "/disk/files",
         maxChunkSize: 1024000,
         add: function (e, data) {
             $("#modal_btn_submit").click(addFile.bind(null, e, data, this));
@@ -84,7 +83,7 @@ function updateCompleteCount(plus) {
  * 绑定在模态框上传按钮click上的事件处理函数
  */
 function addFile(e, data, marker) {
-    debugger;
+    var capacity = sessionStorage.getItem("user_memorySize");
     if ((data.files[0].size + Number(sessionStorage.getItem("user_usedSize"))) > capacity) {
         alert("容量超出上限，无法上传");
         data.abort();
@@ -142,7 +141,7 @@ function addFile(e, data, marker) {
             // 发送请求删除服务器上传到一半的文件
             $.ajax({
                 type: "DELETE",
-                url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/files?cancel=" + data.formData.fileMd5,
+                url: "/users/" + sessionStorage.getItem("user_username") + "/disk/files?cancel=" + data.formData.fileMd5,
                 success: function (message) {
                     data.context.remove();
                     updateLoadingCount(false);
@@ -168,7 +167,7 @@ function addFile(e, data, marker) {
                 // 获取已经上传的字节数，从断点继续
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/files?resume=" + data.formData.fileMd5,
+                    url: "/users/" + sessionStorage.getItem("user_username") + "/disk/files?resume=" + data.formData.fileMd5,
                     success: function (uploadedBytes) {
                         // 断点续传的核心代码
                         data.uploadedBytes = Number(uploadedBytes);// 获取断点

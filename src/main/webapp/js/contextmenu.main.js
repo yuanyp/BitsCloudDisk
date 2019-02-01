@@ -101,7 +101,7 @@ function confirmEditName() {
     } else if (originalName != newName) {
         // 需要交给服务器的数据
         var renameData;
-        var req_url = "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/";
+        var req_url = "/users/" + sessionStorage.getItem("user_username") + "/disk/";
         if (itemTag.attr("data-folder-id") != undefined) {
             req_url += "folders/" + itemTag.attr("data-folder-id");
             var folderName = newName;
@@ -182,7 +182,7 @@ function remove() {
     };
     $.ajax({
         type: "PATCH",
-        url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/move",
+        url: "/users/" + sessionStorage.getItem("user_username") + "/disk/move",
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(moveData),
         success: function (result) {
@@ -296,7 +296,7 @@ function moveTo() {
         };
         $.ajax({
             type: "PATCH",
-            url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/move",
+            url: "/users/" + sessionStorage.getItem("user_username") + "/disk/move",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(moveData),
             success: function (result) {
@@ -358,6 +358,6 @@ function download() {
             }
         }
     });
-    var url = "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/files?token=Bearer " + sessionStorage.getItem("token") + "&files=" + fileParams + "&folders=" + folderParams;
+    var url = "/users/" + sessionStorage.getItem("user_username") + "/disk/files?token=Bearer " + sessionStorage.getItem("token") + "&files=" + fileParams + "&folders=" + folderParams;
     window.location.href = url;
 }
