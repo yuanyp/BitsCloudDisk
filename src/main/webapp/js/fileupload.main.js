@@ -7,7 +7,7 @@ $(function () {
     });
     $("#fileupload").fileupload({
         url: "http://localhost:8080/users/" + sessionStorage.getItem("user_username") + "/disk/files",
-        maxChunkSize: 102400,
+        maxChunkSize: 1024000,
         add: function (e, data) {
             $("#modal_btn_submit").click(addFile.bind(null, e, data, this));
             // 调用带参函数的正确写法
@@ -84,6 +84,7 @@ function updateCompleteCount(plus) {
  * 绑定在模态框上传按钮click上的事件处理函数
  */
 function addFile(e, data, marker) {
+    debugger;
     if ((data.files[0].size + Number(sessionStorage.getItem("user_usedSize"))) > capacity) {
         alert("容量超出上限，无法上传");
         data.abort();

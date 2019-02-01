@@ -7,8 +7,10 @@
     <groupId>groupId</groupId>
     <artifactId>BitsNetDisk</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <build>
+        <finalName>BitsCloudDisk</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -17,6 +19,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <compilerArguments>
+                        <bootclasspath>${java.home}/jre/lib/rt.jar;${java.home}/jre/lib/jce.jar</bootclasspath>
+                    </compilerArguments>
                     <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
@@ -49,9 +54,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.version>4.3.8.RELEASE</spring.version>
         <dubbo.version>2.5.7</dubbo.version>
         <zookeeper.version>3.4.11</zookeeper.version>
+        <java.home>C:\Program Files\Java\jdk1.8.0_102</java.home>
     </properties>
 
     <dependencies>
@@ -442,6 +449,18 @@
             <artifactId>modelmapper</artifactId>
             <version>1.1.1</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -207,7 +207,7 @@ public class DiskServiceImpl implements DiskService {
         // 删除文件
         for (int i = 0; i < files.size(); i++) {
             UserFile localFile = userFileMapper.selectByPrimaryKey(files.get(i));
-            OriginFile file = originFileMapper.selectByPrimaryKey(localFile.getFileId());
+            OriginFile file = originFileMapper.selectByPrimaryKey(localFile.getOriginId());
             removedCap += file.getFileSize();
             userFileMapper.deleteByPrimaryKey(localFile.getFileId());
         }
